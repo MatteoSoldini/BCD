@@ -1,0 +1,54 @@
+body{
+  margin: 0;
+}
+
+.item {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #e8e8e8;
+  padding: 5%;
+}
+
+.display {
+  height: 200px;
+  width: 200px;
+}
+
+input{
+  font-family: 'Source Sans Pro', sans-serif;
+  border: 2px solid red;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  border-radius: 5px;
+  background-color: #f44242;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f44242;
+}
+
+li {
+    float: center;
+}
+
+li h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}

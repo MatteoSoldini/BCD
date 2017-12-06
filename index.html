@@ -1,0 +1,65 @@
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+  <script src="sevenSeg.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <ul>
+    <li><h1>Display a 7 segmenti</h1></li>
+  </ul>
+  <div class="item">
+    <h3>Inserisci il codice BCD</h3>
+    <input type="text" id="codebcd" value="" maxlength="8">
+    <button onclick="bcd()">Premi per convertire da BCD</button>
+    <p id="textbcd"></p>
+    <h3>Inserisci il codice Decimale</h3>
+    <input type="text" id="codedecimale" value="">
+    <button onclick="decimale()">Premi per convertire da decimale</button>
+    <p id="textdecimale"></p>
+    <div id="example1" class="display"></div>
+  </div>
+  <script>
+  function pad (str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
+  }
+  function bcd()
+  {
+    valueBn = document.getElementById("codebcd").value;
+    if (String(valueBn).length != 8)
+    {
+      document.getElementById("textbcd").innerHTML = "!!!INSERISCI 8 CARATTERI!!!";
+      return;
+    }
+    for (i = 0; i <= 8; i++) {
+      if (valueBn.charAt(i) != 0 && valueBn.charAt(i) != 1)
+      {
+        document.getElementById("textbcd").innerHTML = "!!!INSERISCI DEI CARATTERI VALIDI (0,1)!!!";
+        return;
+      }
+    }
+    valueDm = parseInt(valueBn, 2);
+    document.getElementById("textbcd").innerHTML = ("Convertito in decimale: "+ valueDm);
+    $("#example1").sevenSeg({ value: valueDm});
+  }
+  function decimale()
+  {
+    valueDm = document.getElementById("codedecimale").value;
+    if (valueDm <= 9 && valueDm >= 0)
+    {
+      valueBn = pad(parseInt(valueDm, 10).toString(2),8);
+      document.getElementById("textdecimale").innerHTML = ("Convertito in bcd: "+ valueBn);
+      $("#example1").sevenSeg({ value: valueDm});
+    }
+    else
+    {
+      document.getElementById("textdecimale").innerHTML = "!!!INSERISCI UN NUMERO VALIDO DA 0 A 9!!!";
+    }
+  }
+  </script>
+</body>
+</html>
